@@ -1,0 +1,7 @@
+{
+  "name": "ponto",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,27 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Marcações </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="full" [routerLink]="['cadastro']">Adicionar nova marcação</ion-button>
+  
+  <ion-list>
+    <ion-item *ngFor="let marcacao of marcacoes">
+      <ion-label>
+        <h2>{{marcacao.nome}}</h2>
+        <p>{{formatarData(marcacao.data)}}</p>
+      </ion-label>
+
+      <ion-buttons>
+        <ion-button color="primary" [routerLink]="['edicao', marcacao.id]" [disabled]="!isDataAtual(marcacao.data)">
+          <ion-icon name="create" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button color="primary" (click)="confirmarExclusao(marcacao)" [disabled]="!isDataAtual(marcacao.data)">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

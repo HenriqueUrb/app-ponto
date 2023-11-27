@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Atestados
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="full" [routerLink]="['cadastro']">Adicionar nova atestado</ion-button>
+  
+  <ion-list>
+    <ion-item *ngFor="let atestado of atestados">
+      <ion-label>
+        <h2>{{atestado.nome}}</h2>
+        <p>{{formatarData(atestado.data)}}</p>
+        <p>{{atestado.local}}</p>
+      </ion-label>
+
+      <ion-buttons>
+        <ion-button color="primary" [routerLink]="['edicao', atestado.id]">
+          <ion-icon name="create" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button color="primary" (click)="confirmarExclusao(atestado)">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

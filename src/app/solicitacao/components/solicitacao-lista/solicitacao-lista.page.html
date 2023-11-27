@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Solicitações </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="full" [routerLink]="['cadastro']">Adicionar nova solicitação</ion-button>
+  
+  <ion-list>
+    <ion-item *ngFor="let solicitacao of solicitacoes">
+      <ion-label>
+        <h2>{{solicitacao.nome}}</h2>
+        <p>{{getTipoSolicitacaoDescricao(solicitacao.tipoSolicitacao)}}</p>
+        <p>{{formatarData(solicitacao.data)}}</p>
+        <ion-badge [ngClass]="getStatusClass(solicitacao.status)">
+          {{getStatusDescricao(solicitacao.status)}}
+        </ion-badge>
+      </ion-label>
+
+      <ion-buttons>
+        <ion-button color="primary" [routerLink]="['edicao', solicitacao.id]" [disabled]="solicitacao.status !== 'P'">
+          <ion-icon name="create" slot="icon-only"></ion-icon>
+        </ion-button>
+        <ion-button color="primary" (click)="confirmarExclusao(solicitacao)" [disabled]="solicitacao.status !== 'P'">
+          <ion-icon name="trash" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+</ion-content>

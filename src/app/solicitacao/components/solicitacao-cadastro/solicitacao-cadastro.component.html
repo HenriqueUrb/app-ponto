@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cadastro de solicitação</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="solicitacaoForm">
+    <ion-list>
+      <ion-radio-group formControlName="tipoSolicitacao">
+        <ion-list-header>
+          <ion-label>Tipo de solicitação:</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-radio [value]="TipoSolicitacaoEnum.INCLUSAO">
+            Inserção
+          </ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-radio [value]="TipoSolicitacaoEnum.ALTERACAO">
+            Alteração
+          </ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-radio [value]="TipoSolicitacaoEnum.EXCLUSAO">
+            Exclusão
+          </ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+
+    <ion-item>
+      <ion-label position="stacked">Data e Horário</ion-label>
+      <ion-input formControlName="data" type="datetime-local"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nome: </ion-label>
+      <ion-input formControlName="nome" type="text"> </ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="nome?.invalid && (nome?.dirty || nome?.touched)"
+      >
+        <small *ngIf="nome?.errors?.['required']">
+          O campo nome é obrigatório
+        </small>
+        <small *ngIf="nome?.errors?.['minlength']">
+          O campo nome deve conter no mínimo
+          {{ nome?.errors?.['minlength'].requiredLength }} caracteres
+        </small>
+        <small *ngIf="nome?.errors?.['maxlength']">
+          O campo nome deve conter no máximo
+          {{ nome?.errors?.['maxlength'].requiredLength }} caracteres
+        </small>
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Justificativa: </ion-label>
+      <ion-input formControlName="justificativa" type="text"> </ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="justificativa?.invalid && (justificativa?.dirty || justificativa?.touched)"
+      >
+        <small *ngIf="justificativa?.errors?.['required']">
+          O campo justificativa é obrigatório
+        </small>
+        <small *ngIf="justificativa?.errors?.['minlength']">
+          O campo justificativa deve conter no mínimo
+          {{ justificativa?.errors?.['minlength'].requiredLength }} caracteres
+        </small>
+        <small *ngIf="justificativa?.errors?.['maxlength']">
+          O campo justificativa deve conter no máximo
+          {{ justificativa?.errors?.['maxlength'].requiredLength }} caracteres
+        </small>
+      </ion-text>
+    </ion-item>
+
+    <ion-item *ngIf="isAlteracaoOuExclusao()">
+      <ion-label>Marcação:</ion-label>
+      <ion-select formControlName="idMarcacao">
+        <ion-select-option *ngFor="let marcacao of marcacoes" [value]="marcacao">
+          {{marcacao.nome}} - {{formatarData(marcacao.data)}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button
+      expand="full"
+      (click)="salvar()"
+      [disabled]="!solicitacaoForm.valid"
+      >Salvar</ion-button
+    >
+  </form>
+</ion-content>

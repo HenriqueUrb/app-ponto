@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Cadastro de marcação</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="marcacaoForm">
+    <ion-item>
+      <ion-label position="stacked">Data e Horário</ion-label>
+      <ion-input formControlName="data" type="datetime-local"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Nome: </ion-label>
+      <ion-input formControlName="nome" type="text"> </ion-input>
+      <ion-text
+        color="danger"
+        *ngIf="nome?.invalid && (nome?.dirty || nome?.touched)"
+      >
+        <small *ngIf="nome?.errors?.['required']">
+          O campo nome é obrigatório
+        </small>
+        <small *ngIf="nome?.errors?.['minlength']">
+          O campo nome deve conter no mínimo
+          {{ nome?.errors?.['minlength'].requiredLength }} caracteres
+        </small>
+        <small *ngIf="nome?.errors?.['maxlength']">
+          O campo nome deve conter no máximo
+          {{ nome?.errors?.['maxlength'].requiredLength }} caracteres
+        </small>
+      </ion-text>
+    </ion-item>
+    
+    <ion-item>
+      <ion-select formControlName="tipo" label="Tipo" placeholder="Tipo de marcação">
+        <ion-select-option value="N">Entrada/Saída</ion-select-option>
+        <ion-select-option value="M">Médico</ion-select-option>
+        <ion-select-option value="P">Particular</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button
+      expand="full"
+      (click)="salvar()"
+      [disabled]="!marcacaoForm.valid"
+      >Salvar</ion-button
+    >
+  </form>
+</ion-content>

@@ -1,0 +1,85 @@
+{
+  "marcacoes": [
+    {
+      "nome": "Henrique Urbano",
+      "data": "2023-11-25T10:08",
+      "tipo": "M",
+      "id": 1
+    },
+    {
+      "nome": "Henrique Urbano",
+      "data": "2023-11-26T11:34",
+      "tipo": "N",
+      "id": 2
+    },
+    {
+      "nome": "teste",
+      "data": "2023-11-26T11:15",
+      "tipo": "N",
+      "id": 3
+    }
+  ],
+  "solicitacoes": [
+    {
+      "nome": "Henrique",
+      "justificativa": "Esqueci de marcar",
+      "data": "2023-11-26T19:32",
+      "tipoSolicitacao": "I",
+      "idMarcacao": null,
+      "id": 1,
+      "status": "A"
+    },
+    {
+      "nome": "Lucas",
+      "justificativa": "A data e horário estão errados",
+      "data": "2023-11-26T10:23",
+      "tipoSolicitacao": "A",
+      "idMarcacao": {
+        "nome": "Henrique Urbano",
+        "data": "2023-11-26T11:34",
+        "tipo": "N",
+        "id": 2
+      },
+      "id": 2,
+      "status": "R"
+    },
+    {
+      "nome": "Henrique",
+      "justificativa": "Exclusão do ponto errado",
+      "data": "2023-11-26T22:37",
+      "tipoSolicitacao": "E",
+      "idMarcacao": {
+        "nome": "testeeeee",
+        "data": "2023-11-26T21:19",
+        "tipo": "P",
+        "id": 4
+      },
+      "id": 3,
+      "status": "A"
+    },
+    {
+      "nome": "Teste",
+      "justificativa": "Justificativa teste",
+      "data": "2023-11-26T19:35",
+      "tipoSolicitacao": "A",
+      "idMarcacao": {
+        "nome": "testeeeee",
+        "data": "2023-11-26T21:19",
+        "tipo": "P",
+        "id": 4
+      },
+      "id": 4,
+      "status": "P"
+    }
+  ],
+  "atestados": [
+    {
+      "nome": "Henriqueeeee",
+      "data": "2023-11-26T19:35",
+      "duracao": 2,
+      "local": "UNIMED",
+      "arquivo": "C:\\fakepath\\AngularTestes2.pdf",
+      "id": 1
+    }
+  ]
+}
