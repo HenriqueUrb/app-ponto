@@ -73,7 +73,7 @@ export class SolicitacaoCadastroComponent implements OnInit {
         solicitacao?.tipoSolicitacao || TipoSolicitacaoEnum.INCLUSAO,
         Validators.required
       ),
-      idMarcacao: new FormControl(solicitacao?.idMarcacao || null, Validators.required),
+      idMarcacao: new FormControl(solicitacao?.idMarcacao || null),
     });
   }
 
