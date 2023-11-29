@@ -1,9 +1,18 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title> Home </ion-title>
+    <ion-title> PontoFlex </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-content>
+    <img src="assets/img/logo-azul.png" alt="Logo do App" class="centralizado" >
+
+    <div class="relogio">
+      {{ horaAtual | date: 'HH:mm:ss' }}
+    </div>
+  </ion-content>
+  
   
 </ion-content>
